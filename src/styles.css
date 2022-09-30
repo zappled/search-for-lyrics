@@ -1,0 +1,28 @@
+* {
+  font-family: "Rajdhani", sans-serif;
+}
+
+.navbar-brand {
+  font-size: 100%;
+  padding: 6px;
+  padding-left: 15px;
+}
+
+.nav-input {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 90%;
+}
+
+.input {
+  width: 25%;
+}
+
+.material-icons {
+  font-size: 90%;
+  padding-right: 2px;
+  top: 2px;
+}
