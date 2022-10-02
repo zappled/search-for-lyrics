@@ -1,14 +1,15 @@
 import React, { useRef, useState } from "react";
 import SearchResults from "../components/SearchResults";
 
-const SearchSongContent = (props) => {
+const SearchSongContent = () => {
   const contentInputRef = useRef();
   const [songs, setSongs] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   const addInput = (e) => {
     e.preventDefault();
-    const input = inputRef.current.value;
+    const input = contentInputRef.current.value;
     findSongs(input);
   };
 
@@ -23,29 +24,43 @@ const SearchSongContent = (props) => {
     }
   };
 
+  const searchAgain = () => {
+    setHasSearched(false);
+  };
+
   return (
     <>
-      <form onSubmit={addInput}>
-        <input
-          type="text"
-          placeholder="Search by quote content"
-          className="input"
-          ref={contentInputRef}
-          required
-        />
-        <button>Submit</button>
-      </form>
-      {songs.map((song) => {
-        return (
-          <SearchResults
-            content={song.content}
-            author={song.author}
-            length={song.length}
-            tag={song.tag}
-            key={Math.random()}
-          />
-        );
-      })}
+      {hasSearched ? (
+        <>
+          <button onClick={searchAgain}>Search Again</button>
+          {songs.map((song) => {
+            return (
+              <SearchResults
+                content={song.content}
+                author={song.author}
+                length={song.length}
+                tag={song.tag}
+                key={Math.random()}
+                setHasSearched={setHasSearched}
+              />
+            );
+          })}
+        </>
+      ) : (
+        <>
+          <div>Search quote contents using specific keywords:</div>
+          <form onSubmit={addInput}>
+            <input
+              type="text"
+              placeholder="Search by quote content"
+              className="input"
+              ref={contentInputRef}
+              required
+            />
+            <button>Submit</button>
+          </form>
+        </>
+      )}
     </>
   );
 };

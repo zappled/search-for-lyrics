@@ -1,5 +1,5 @@
 import React from "react";
-import SearchSongContent from "./SearchSong";
+import SearchSongContent from "../pages/SearchSongContent";
 
 const SearchByContent = () => {
   return (
@@ -8,8 +8,6 @@ const SearchByContent = () => {
         <div className="row">
           <div className="col"></div>
           <div className="col-5">
-            <br />
-            Search quote contents using specific keywords:
             <br />
             <SearchSongContent />
           </div>

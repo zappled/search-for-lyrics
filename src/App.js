@@ -2,10 +2,11 @@ import React from "react";
 import MainMenu from "./pages/MainMenu";
 import styles from "./styles.css";
 import { Route, Switch, Link } from "react-router-dom";
-import SearchByContent from "./pages/SearchByContent";
+import SearchByContent from "./components/SearchByContent";
 import Favourites from "./pages/Favourites";
 import Trending from "./pages/Trending";
 import AppInfo from "./pages/AppInfo";
+import SongDetails from "./components/SongDetails";
 
 function App() {
   return (
@@ -64,6 +65,9 @@ function App() {
         </Route>
         <Route exact path="/app-info">
           <AppInfo />
+        </Route>
+        <Route exact path="/details">
+          <SongDetails />
         </Route>
       </Switch>
     </>

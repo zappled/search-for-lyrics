@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import SearchResults from "../components/SearchResults";
 
-const SearchSong = (props) => {
+const SearchSongAuthor = () => {
   const inputRef = useRef();
   const [songs, setSongs] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
@@ -38,7 +38,7 @@ const SearchSong = (props) => {
       <form onSubmit={addInput}>
         <input
           type="text"
-          placeholder="Search by quote author"
+          placeholder="Enter name"
           className="input"
           ref={inputRef}
           required
@@ -60,4 +60,4 @@ const SearchSong = (props) => {
   );
 };
 
-export default SearchSong;
+export default SearchSongAuthor;

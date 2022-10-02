@@ -24,6 +24,10 @@ form {
 
 .input {
   width: 60%;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid black;
+  margin-right: 5px;
 }
 
 .material-icons {
@@ -34,6 +38,8 @@ form {
 
 .header-icon {
   font-size: 100%;
+  padding-right: 3px;
+  padding-left: 3px;
   align-items: center;
 }
 
@@ -47,4 +53,9 @@ form {
   margin-bottom: 5px;
   margin-top: 5px;
   padding: 10px;
+}
+
+.quote-author {
+  font-size: 80%;
+  text-decoration: underline;
 }

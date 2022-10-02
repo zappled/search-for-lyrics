@@ -1,5 +1,5 @@
 import React from "react";
-import SearchSong from "./SearchSong";
+import SearchSongAuthor from "./SearchSongAuthor";
 
 const MainMenu = () => {
   return (
@@ -11,7 +11,7 @@ const MainMenu = () => {
             <br />
             Search quotes by person name:
             <br />
-            <SearchSong />
+            <SearchSongAuthor />
           </div>
           <div className="col"></div>
         </div>
