@@ -1,7 +1,7 @@
 import React from "react";
 
-const SongLyrics = () => {
+const AppInfo = () => {
   return <div></div>;
 };
 
-export default SongLyrics;
+export default AppInfo;

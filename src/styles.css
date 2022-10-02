@@ -11,18 +11,40 @@
 .nav-input {
   display: flex;
   align-items: center;
+  padding-left: 15px;
 }
 
 .nav-link {
   font-size: 90%;
 }
 
+form {
+  padding: 15px 0;
+}
+
 .input {
-  width: 25%;
+  width: 60%;
 }
 
 .material-icons {
   font-size: 90%;
   padding-right: 2px;
   top: 2px;
+}
+
+.header-icon {
+  font-size: 100%;
+  align-items: center;
+}
+
+.result-container {
+  /* display: flex; */
+  border: 3px solid black;
+  border-style: double;
+  width: 95%;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 10px;
 }
