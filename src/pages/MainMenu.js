@@ -9,8 +9,6 @@ const MainMenu = () => {
           <div className="col"></div>
           <div className="col-5">
             <br />
-            Search quotes by person name:
-            <br />
             <SearchSongAuthor />
           </div>
           <div className="col"></div>

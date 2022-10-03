@@ -8,7 +8,7 @@ const AppInfo = () => {
           <div className="col"></div>
           <div className="col-5">
             <br />
-            Github Link:
+            <a href="">View on Github</a>
             <br />
             <a href="https://github.com/lukePeavey/quotable">
               Powered by Quotable API

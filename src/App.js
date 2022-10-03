@@ -4,7 +4,7 @@ import styles from "./styles.css";
 import { Route, Switch, Link } from "react-router-dom";
 import SearchByContent from "./components/SearchByContent";
 import Favourites from "./pages/Favourites";
-import Trending from "./pages/Trending";
+import RandomQuote from "./pages/RandomQuote";
 import AppInfo from "./pages/AppInfo";
 import SongDetails from "./components/SongDetails";
 
@@ -36,7 +36,7 @@ function App() {
               Favourites
             </div>
           </Link>
-          <Link to="trending" className="nav-link">
+          <Link to="random" className="nav-link">
             <div className="nav-input">
               <i className="material-icons">question_mark</i>
               Random Quote
@@ -60,8 +60,8 @@ function App() {
         <Route exact path="/favourites">
           <Favourites />
         </Route>
-        <Route exact path="/trending">
-          <Trending />
+        <Route exact path="/random">
+          <RandomQuote />
         </Route>
         <Route exact path="/app-info">
           <AppInfo />

@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
 import SearchResults from "../components/SearchResults";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const SearchSongContent = () => {
   const contentInputRef = useRef();
   const [songs, setSongs] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const addInput = (e) => {
     e.preventDefault();
@@ -15,12 +17,14 @@ const SearchSongContent = () => {
 
   const findSongs = async (input) => {
     if (input) {
+      setIsLoading(true);
       setHasSearched(true);
       const url = `https://api.quotable.io/search/quotes?query=${input}&fields=content`;
       const res = await fetch(url);
       const data = await res.json();
       console.log(data.results);
       setSongs(data.results);
+      setIsLoading(false);
     }
   };
 
@@ -28,11 +32,20 @@ const SearchSongContent = () => {
     setHasSearched(false);
   };
 
+  let content = "";
+
+  if (isLoading) {
+    content = <LoadingSpinner />;
+  }
+
   return (
     <>
       {hasSearched ? (
         <>
-          <button onClick={searchAgain}>Search Again</button>
+          <button className="search-again" onClick={searchAgain}>
+            Search Again
+          </button>
+          {content}
           {songs.map((song) => {
             return (
               <SearchResults
@@ -42,6 +55,8 @@ const SearchSongContent = () => {
                 tag={song.tag}
                 key={Math.random()}
                 setHasSearched={setHasSearched}
+                setShowDetails={setShowDetails}
+                showDetails={showDetails}
               />
             );
           })}
@@ -52,7 +67,7 @@ const SearchSongContent = () => {
           <form onSubmit={addInput}>
             <input
               type="text"
-              placeholder="Search by quote content"
+              placeholder="Enter keyword"
               className="input"
               ref={contentInputRef}
               required
