@@ -66,6 +66,9 @@ form {
 }
 
 .quote-extra {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
   font-size: 80%;
 }
 
@@ -106,4 +109,13 @@ form {
   justify-content: center;
   align-items: center;
   height: 350px;
+}
+
+.add-fav {
+  display: block;
+  margin: 0 auto;
+  background-color: rgb(200, 200, 200);
+  padding: 5px;
+  margin-top: 5px;
+  width: 50%;
 }

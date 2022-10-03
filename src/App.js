@@ -6,7 +6,6 @@ import SearchByContent from "./components/SearchByContent";
 import Favourites from "./pages/Favourites";
 import RandomQuote from "./pages/RandomQuote";
 import AppInfo from "./pages/AppInfo";
-import SongDetails from "./components/SongDetails";
 
 function App() {
   return (
@@ -65,9 +64,6 @@ function App() {
         </Route>
         <Route exact path="/app-info">
           <AppInfo />
-        </Route>
-        <Route exact path="/details">
-          <SongDetails />
         </Route>
       </Switch>
     </>

@@ -1,5 +1,5 @@
 import React from "react";
-import SearchSongContent from "../pages/SearchSongContent";
+import SearchQuotesContent from "../pages/SearchQuotesContent";
 
 const SearchByContent = () => {
   return (
@@ -9,7 +9,7 @@ const SearchByContent = () => {
           <div className="col"></div>
           <div className="col-5">
             <br />
-            <SearchSongContent />
+            <SearchQuotesContent />
           </div>
           <div className="col"></div>
         </div>

@@ -8,6 +8,7 @@ const SearchQuotesContent = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentInput, setCurrentInput] = useState();
 
   const addInput = (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ const SearchQuotesContent = () => {
     if (input) {
       setIsLoading(true);
       setHasSearched(true);
+      setCurrentInput(input);
       const url = `https://api.quotable.io/search/quotes?query=${input}&fields=content`;
       const res = await fetch(url);
       const data = await res.json();
@@ -30,6 +32,7 @@ const SearchQuotesContent = () => {
 
   const searchAgain = () => {
     setHasSearched(false);
+    setQuotes([]);
   };
 
   let content = "";
@@ -45,6 +48,9 @@ const SearchQuotesContent = () => {
           <button className="search-again" onClick={searchAgain}>
             Search Again
           </button>
+          <br />
+          You searched for "{currentInput}"
+          <br />
           {content}
           {quotes.map((quote) => {
             return (
@@ -52,7 +58,7 @@ const SearchQuotesContent = () => {
                 content={quote.content}
                 author={quote.author}
                 length={quote.length}
-                tag={quote.tag}
+                tags={quote.tags}
                 key={Math.random()}
                 setHasSearched={setHasSearched}
                 setShowDetails={setShowDetails}
