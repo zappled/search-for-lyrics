@@ -1,5 +1,5 @@
 import React from "react";
-import SearchSongAuthor from "./SearchSongAuthor";
+import SearchQuotesAuthor from "./SearchQuotesAuthor";
 
 const MainMenu = () => {
   return (
@@ -9,7 +9,7 @@ const MainMenu = () => {
           <div className="col"></div>
           <div className="col-5">
             <br />
-            <SearchSongAuthor />
+            <SearchQuotesAuthor />
           </div>
           <div className="col"></div>
         </div>
