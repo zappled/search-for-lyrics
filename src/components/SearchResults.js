@@ -37,6 +37,13 @@ const SearchResults = (props) => {
           ""
         )}
       </div>
+      {details ? (
+        <button className="add-fav">
+          <i className="material-icons">favorite</i>Add to Favourites
+        </button>
+      ) : (
+        ""
+      )}
       {/* <button className="add-fav">
         <i className="material-icons">favorite</i>
       </button> */}
@@ -45,3 +52,5 @@ const SearchResults = (props) => {
 };
 
 export default SearchResults;
+
+// add 'create own quote' function as stretch goal

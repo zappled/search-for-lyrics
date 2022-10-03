@@ -56,6 +56,11 @@ form {
   padding: 10px;
 }
 
+.result-container:hover {
+  /* background-color: #dbdbdb; */
+  background: linear-gradient(30deg, white, #7978788c);
+}
+
 .quote-author {
   font-size: 80%;
   text-decoration: underline;
@@ -74,6 +79,16 @@ form {
 
 .search-again {
   margin-bottom: 10px;
+  background-color: #dbdbdb;
+  font-size: 80%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-again:hover {
+  background-color: #383636;
+  color: #ffffff8c;
 }
 
 .randomize {
@@ -114,8 +129,16 @@ form {
 .add-fav {
   display: block;
   margin: 0 auto;
-  background-color: rgb(200, 200, 200);
+  background-color: #dbdbdb;
   padding: 5px;
   margin-top: 5px;
-  width: 50%;
+  width: 40%;
+  font-size: 80%;
+  border: none;
+  border-radius: 5px;
+}
+
+.add-fav:hover {
+  background-color: #383636;
+  color: #ffffff8c;
 }
