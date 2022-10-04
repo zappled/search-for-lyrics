@@ -33,8 +33,9 @@ form {
 
 .material-icons {
   font-size: 90%;
-  padding-right: 2px;
-  top: 2px;
+  padding-right: 3px;
+  margin-top: -2.5px;
+  vertical-align: middle;
 }
 
 .header-icon {

@@ -48,12 +48,6 @@ function App() {
               Search by Content
             </div>
           </Link>
-          <Link to="favourites" className="nav-link">
-            <div className="nav-input">
-              <i className="material-icons">favorite</i>
-              Favourites
-            </div>
-          </Link>
           <Link to="random" className="nav-link">
             <div className="nav-input">
               <i className="material-icons">question_mark</i>
@@ -66,6 +60,12 @@ function App() {
               Create A Quote
             </div>
           </Link>
+          <Link to="favourites" className="nav-link">
+            <div className="nav-input">
+              <i className="material-icons">favorite</i>
+              Favourites
+            </div>
+          </Link>
         </div>
       </nav>
 
@@ -75,6 +75,21 @@ function App() {
         </Route>
         <Route exact path="/search-content">
           <SearchByContent setFavList={setFavList} favList={favList} />
+        </Route>
+
+        <Route exact path="/random">
+          <div className="container text-center">
+            <div className="row">
+              <div className="col"></div>
+              <div className="col-5">
+                <RandomQuote favList={favList} setFavList={setFavList} />
+              </div>
+              <div className="col"></div>
+            </div>
+          </div>
+        </Route>
+        <Route exact path="/create-quote">
+          <CreateQuote favList={favList} setFavList={setFavList} />
         </Route>
         <Route exact path="/favourites">
           {/* <Favourites setFavList={setFavList} favList={favList} /> */}
@@ -118,20 +133,6 @@ function App() {
               <div className="col"></div>
             </div>
           </div>
-        </Route>
-        <Route exact path="/random">
-          <div className="container text-center">
-            <div className="row">
-              <div className="col"></div>
-              <div className="col-5">
-                <RandomQuote favList={favList} setFavList={setFavList} />
-              </div>
-              <div className="col"></div>
-            </div>
-          </div>
-        </Route>
-        <Route exact path="/create-quote">
-          <CreateQuote favList={favList} setFavList={setFavList} />
         </Route>
       </Switch>
       {/* <nav className="navbar fixed-bottom bg-dark">
