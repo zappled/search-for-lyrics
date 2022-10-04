@@ -12,24 +12,11 @@ const SearchResults = (props) => {
     }
   };
 
-  // const toggleDetails = (index) => {
-  //   if (props.showDetails === false) {
-  //     props.setShowDetails(true);
-  //   } else if (props.showDetails === true) {
-  //     props.setShowDetails(false);
-  //   }
-  // };
-
   return (
     <>
-      <div
-        className="result-container"
-        // onClick={() => toggleDetails(props.index)}
-        onClick={() => setDetails(!details)}
-      >
+      <div className="result-container" onClick={() => setDetails(!details)}>
         <div className="quote-author">{props.author}:</div>
         <div className="quote-content">"{props.content}"</div>
-        {/* {props.showDetails ? ( */}
         {details ? (
           <>
             <div className="quote-extra">
@@ -51,9 +38,6 @@ const SearchResults = (props) => {
       ) : (
         ""
       )}
-      {/* <button className="add-fav">
-        <i className="material-icons">favorite</i>
-      </button> */}
     </>
   );
 };

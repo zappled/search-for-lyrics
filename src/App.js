@@ -65,25 +65,42 @@ function App() {
               <div className="col"></div>
               <div className="col-5">
                 <br />
-                <div>All your favourite quotes are saved here:</div>
-                {favList.map((fav) => {
-                  return (
-                    <Favourites
-                      content={fav.content}
-                      author={fav.author}
-                      length={fav.length}
-                      tags={fav.tags}
-                      key={Math.random()}
-                    />
-                  );
-                })}
+                <div>Need a reference? View your favourite quotes here:</div>
+                {favList.length !== 0 ? (
+                  favList.map((fav) => {
+                    return (
+                      <Favourites
+                        content={fav.content}
+                        author={fav.author}
+                        length={fav.length}
+                        tags={fav.tags}
+                        key={Math.random()}
+                      />
+                    );
+                  })
+                ) : (
+                  <>
+                    <br />
+                    <div className="fav-empty">
+                      <i>Add a favourite to start viewing your list</i>
+                    </div>
+                  </>
+                )}
               </div>
               <div className="col"></div>
             </div>
           </div>
         </Route>
         <Route exact path="/random">
-          <RandomQuote />
+          <div className="container text-center">
+            <div className="row">
+              <div className="col"></div>
+              <div className="col-5">
+                <RandomQuote favList={favList} setFavList={setFavList} />
+              </div>
+              <div className="col"></div>
+            </div>
+          </div>
         </Route>
         <Route exact path="/app-info">
           <AppInfo />

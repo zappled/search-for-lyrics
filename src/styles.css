@@ -142,3 +142,12 @@ form {
   background-color: #383636;
   color: #ffffff8c;
 }
+
+.fav-empty {
+  font-size: 80%;
+  padding: 5px;
+  border: 3px solid black;
+  border-style: double;
+  height: 50%;
+  line-height: 50px;
+}

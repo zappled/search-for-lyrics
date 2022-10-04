@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-const RandomQuote = () => {
+const RandomQuote = (props) => {
   const [quote, setQuote] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,12 @@ const RandomQuote = () => {
 
       const data = await res.json();
 
-      setQuote({ content: data.content, author: data.author, tags: data.tags });
+      setQuote({
+        content: data.content,
+        author: data.author,
+        tags: data.tags,
+        quote: data,
+      });
     } catch (err) {
       setError(err.message);
     }
@@ -43,22 +48,20 @@ const RandomQuote = () => {
   if (quote) {
     content = (
       <>
-        <div className="row">
-          <div className="col"></div>
-          <div className="col-5"></div>
-          <div className="result-container">
-            <div className="quote-author">{quote.author}:</div>
-            <div className="quote-content">"{quote.content}"</div>
+        <div className="result-container">
+          <div className="quote-author">{quote.author}:</div>
+          <div className="quote-content">"{quote.content}"</div>
 
-            <div className="quote-extra">
-              Quote length: <b>{quote.content?.split(" ").length} words</b>,
-              tags:{" "}
-              <b>
-                <u>{quote.tags?.toString().replace(",", ", ")}</u>
-              </b>
-            </div>
+          <div className="quote-extra">
+            Quote length: <b>{quote.content?.split(" ").length} words</b>, tags:{" "}
+            <b>
+              <u>{quote.tags?.toString().replace(",", ", ")}</u>
+            </b>
           </div>
         </div>
+        <button className="add-fav" onClick={() => addToFav(quote)}>
+          <i className="material-icons">favorite</i>Add to Favourites
+        </button>
       </>
     );
   }
@@ -66,6 +69,13 @@ const RandomQuote = () => {
   if (isLoading) {
     content = <LoadingSpinner />;
   }
+
+  const addToFav = (newItem) => {
+    console.log(newItem);
+    {
+      props.setFavList((prevState) => [...prevState, newItem]);
+    }
+  };
 
   return (
     <>
@@ -75,9 +85,19 @@ const RandomQuote = () => {
           <div className="col-5"></div>
           <br />
           <p>Be inspired by our selection of random quotes!</p>
-          <button className="randomize" onClick={randomQuote}>
+          <button
+            className="search-again"
+            style={{
+              width: "150px",
+              display: "block",
+              margin: "0 auto",
+              marginBottom: "10px",
+            }}
+            onClick={randomQuote}
+          >
             Find Another Quote
           </button>
+
           {content}
         </div>
         <div className="col"></div>
