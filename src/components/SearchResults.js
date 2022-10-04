@@ -5,6 +5,13 @@ const SearchResults = (props) => {
 
   const [details, setDetails] = useState(false);
 
+  const addToFav = (newItem) => {
+    console.log(newItem);
+    {
+      props.setFavList((prevState) => [...prevState, newItem]);
+    }
+  };
+
   // const toggleDetails = (index) => {
   //   if (props.showDetails === false) {
   //     props.setShowDetails(true);
@@ -38,7 +45,7 @@ const SearchResults = (props) => {
         )}
       </div>
       {details ? (
-        <button className="add-fav">
+        <button className="add-fav" onClick={() => addToFav(props.quote)}>
           <i className="material-icons">favorite</i>Add to Favourites
         </button>
       ) : (

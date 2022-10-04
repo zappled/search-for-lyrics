@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import SearchResults from "../components/SearchResults";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-const SearchQuotesContent = () => {
+const SearchQuotesContent = (props) => {
   const contentInputRef = useRef();
   const [quotes, setQuotes] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
@@ -63,6 +63,9 @@ const SearchQuotesContent = () => {
                 setHasSearched={setHasSearched}
                 setShowDetails={setShowDetails}
                 showDetails={showDetails}
+                setFavList={props.setFavList}
+                favList={props.favList}
+                quote={quote}
               />
             );
           })}

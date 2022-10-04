@@ -1,7 +1,7 @@
 import React from "react";
 import SearchQuotesContent from "../pages/SearchQuotesContent";
 
-const SearchByContent = () => {
+const SearchByContent = (props) => {
   return (
     <>
       <div className="container text-center">
@@ -9,7 +9,10 @@ const SearchByContent = () => {
           <div className="col"></div>
           <div className="col-5">
             <br />
-            <SearchQuotesContent />
+            <SearchQuotesContent
+              setFavList={props.setFavList}
+              favList={props.favList}
+            />
           </div>
           <div className="col"></div>
         </div>

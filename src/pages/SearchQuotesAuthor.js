@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import SearchResults from "../components/SearchResults";
 import LoadingSpinner from "../components/LoadingSpinner";
 
-const SearchQuotesAuthor = () => {
+const SearchQuotesAuthor = (props) => {
   const authorInputRef = useRef();
   const [quotes, setQuotes] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
@@ -52,18 +52,20 @@ const SearchQuotesAuthor = () => {
           You searched for "{currentInput}"
           <br />
           {content}
-          {quotes.map((quote, index) => {
+          {quotes.map((quote) => {
             return (
               <SearchResults
                 content={quote.content}
                 author={quote.author}
                 length={quote.length}
                 tags={quote.tags}
-                index={index}
                 key={Math.random()}
                 setHasSearched={setHasSearched}
                 setShowDetails={setShowDetails}
                 showDetails={showDetails}
+                setFavList={props.setFavList}
+                favList={props.favList}
+                quote={quote}
               />
             );
           })}

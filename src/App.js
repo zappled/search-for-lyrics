@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MainMenu from "./pages/MainMenu";
 import styles from "./styles.css";
 import { Route, Switch, Link } from "react-router-dom";
@@ -8,6 +8,8 @@ import RandomQuote from "./pages/RandomQuote";
 import AppInfo from "./pages/AppInfo";
 
 function App() {
+  const [favList, setFavList] = useState([]);
+
   return (
     <>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -51,13 +53,34 @@ function App() {
       </nav>
       <Switch>
         <Route exact path="/">
-          <MainMenu />
+          <MainMenu setFavList={setFavList} favList={favList} />
         </Route>
         <Route exact path="/search-content">
-          <SearchByContent />
+          <SearchByContent setFavList={setFavList} favList={favList} />
         </Route>
         <Route exact path="/favourites">
-          <Favourites />
+          {/* <Favourites setFavList={setFavList} favList={favList} /> */}
+          <div className="container text-center">
+            <div className="row">
+              <div className="col"></div>
+              <div className="col-5">
+                <br />
+                <div>All your favourite quotes are saved here:</div>
+                {favList.map((fav) => {
+                  return (
+                    <Favourites
+                      content={fav.content}
+                      author={fav.author}
+                      length={fav.length}
+                      tags={fav.tags}
+                      key={Math.random()}
+                    />
+                  );
+                })}
+              </div>
+              <div className="col"></div>
+            </div>
+          </div>
         </Route>
         <Route exact path="/random">
           <RandomQuote />
