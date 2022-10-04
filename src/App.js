@@ -18,10 +18,11 @@ function App() {
         tags: "tags",
       };
       const sortProperty = types[type];
-      const sorted = [...favList].sort(
-        (a, b) => b[sortProperty] - a[sortProperty]
-      );
-      setFavList(sorted);
+      const sortList = [...favList];
+      console.log(sortList);
+      sortList.sort((a, b) => b[sortProperty] - a[sortProperty]);
+      console.log(sortList);
+      setFavList(sortList);
     };
 
     sortArray(sortType);
@@ -92,7 +93,6 @@ function App() {
           <CreateQuote favList={favList} setFavList={setFavList} />
         </Route>
         <Route exact path="/favourites">
-          {/* <Favourites setFavList={setFavList} favList={favList} /> */}
           <div className="container text-center">
             <div className="row">
               <div className="col"></div>
@@ -135,18 +135,6 @@ function App() {
           </div>
         </Route>
       </Switch>
-      {/* <nav className="navbar fixed-bottom bg-dark">
-        <div className="container-fluid">
-          <div className="navbar-brand">
-            <a className="nav-input" href="#" style={{ color: "#FFFFFF8C" }}>
-              View project on Github
-            </a>
-            <a className="nav-input" href="#" style={{ color: "#FFFFFF8C" }}>
-              Powered by Quotable API
-            </a>
-          </div>
-        </div>
-      </nav> */}
 
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-bottom">
         <div className="navbar-nav footer-to-center">
@@ -165,7 +153,6 @@ function App() {
             >
               Powered by Quotable API
             </a>
-            {/* <div className="nav-input">|</div> */}
           </div>
         </div>
       </nav>

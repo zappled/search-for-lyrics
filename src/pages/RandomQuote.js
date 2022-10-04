@@ -75,7 +75,6 @@ const RandomQuote = (props) => {
 
   const addToFav = (newItem) => {
     props.setFavList((prevState) => [...prevState, newItem]);
-    console.log(props.favList);
   };
 
   return (

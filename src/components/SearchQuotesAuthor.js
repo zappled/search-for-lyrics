@@ -24,7 +24,6 @@ const SearchQuotesAuthor = (props) => {
       const url = `https://api.quotable.io/search/quotes?query=${input}&fields=author`;
       const res = await fetch(url);
       const data = await res.json();
-      console.log(data.results);
       setQuotes(data.results);
       setIsLoading(false);
     }
