@@ -21,7 +21,6 @@ const RandomQuote = (props) => {
         content: data.content,
         author: data.author,
         tags: data.tags,
-        quote: data,
       });
     } catch (err) {
       setError(err.message);
@@ -34,7 +33,11 @@ const RandomQuote = (props) => {
     const url = `https://api.quotable.io/random`;
     const res = await fetch(url);
     const data = await res.json();
-    setQuote({ content: data.content, author: data.author, tags: data.tags });
+    setQuote({
+      content: data.content,
+      author: data.author,
+      tags: data.tags,
+    });
     setIsLoading(false);
   };
 
@@ -72,6 +75,7 @@ const RandomQuote = (props) => {
 
   const addToFav = (newItem) => {
     props.setFavList((prevState) => [...prevState, newItem]);
+    console.log(props.favList);
   };
 
   return (

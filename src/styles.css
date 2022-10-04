@@ -180,3 +180,20 @@ form {
   height: 50%;
   line-height: 50px;
 }
+
+.footer-text {
+  display: inline-flex;
+  width: 50%;
+  color: #ffffff8c;
+  text-decoration: none;
+  margin-left: auto;
+  font-size: 90%;
+}
+
+.footer-to-center {
+  margin: 0 auto;
+}
+
+.footer-text:hover {
+  color: rgb(199, 199, 199);
+}

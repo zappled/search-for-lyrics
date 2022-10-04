@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles.css";
 import { Route, Switch, Link } from "react-router-dom";
 import SearchByContent from "./pages/SearchByContent";
 import Favourites from "./pages/Favourites";
 import RandomQuote from "./pages/RandomQuote";
-import AppInfo from "./pages/AppInfo";
 import SearchByAuthor from "./pages/SearchByAuthor";
+import CreateQuote from "./pages/CreateQuote";
 
 function App() {
   const [favList, setFavList] = useState([]);
+  const [sortType, setSortType] = useState("");
+
+  useEffect(() => {
+    const sortArray = (type) => {
+      const types = {
+        author: "author",
+        tags: "tags",
+      };
+      const sortProperty = types[type];
+      const sorted = [...favList].sort(
+        (a, b) => b[sortProperty] - a[sortProperty]
+      );
+      setFavList(sorted);
+    };
+
+    sortArray(sortType);
+  }, [sortType]);
 
   return (
     <>
@@ -43,14 +60,15 @@ function App() {
               Random Quote
             </div>
           </Link>
-          <Link to="app-info" className="nav-link">
+          <Link to="create-quote" className="nav-link">
             <div className="nav-input">
-              <i className="material-icons">info</i>
-              App Info
+              <i className="material-icons">sms</i>
+              Create A Quote
             </div>
           </Link>
         </div>
       </nav>
+
       <Switch>
         <Route exact path="/">
           <SearchByAuthor setFavList={setFavList} favList={favList} />
@@ -66,21 +84,28 @@ function App() {
               <div className="col-5">
                 <br />
                 <div>Need a reference? View your favourite quotes here:</div>
+
                 {favList.length !== 0 ? (
-                  favList.map((fav) => {
-                    return (
-                      <Favourites
-                        content={fav.content}
-                        author={fav.author}
-                        length={fav.length}
-                        tags={fav.tags}
-                        key={Math.random()}
-                        favList={favList}
-                        setFavList={setFavList}
-                        fav={fav}
-                      />
-                    );
-                  })
+                  <>
+                    <select onChange={(e) => setSortType(e.target.value)}>
+                      <option value="author">Author</option>
+                      <option value="tags">Tags</option>
+                    </select>
+                    {favList.map((fav) => {
+                      return (
+                        <Favourites
+                          content={fav.content}
+                          author={fav.author}
+                          length={fav.length}
+                          tags={fav.tags}
+                          key={Math.random()}
+                          favList={favList}
+                          setFavList={setFavList}
+                          fav={fav}
+                        />
+                      );
+                    })}
+                  </>
                 ) : (
                   <>
                     <br />
@@ -105,10 +130,44 @@ function App() {
             </div>
           </div>
         </Route>
-        <Route exact path="/app-info">
-          <AppInfo />
+        <Route exact path="/create-quote">
+          <CreateQuote favList={favList} setFavList={setFavList} />
         </Route>
       </Switch>
+      {/* <nav className="navbar fixed-bottom bg-dark">
+        <div className="container-fluid">
+          <div className="navbar-brand">
+            <a className="nav-input" href="#" style={{ color: "#FFFFFF8C" }}>
+              View project on Github
+            </a>
+            <a className="nav-input" href="#" style={{ color: "#FFFFFF8C" }}>
+              Powered by Quotable API
+            </a>
+          </div>
+        </div>
+      </nav> */}
+
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-bottom">
+        <div className="navbar-nav footer-to-center">
+          <div className="navbar-brand">
+            <a
+              className="nav-input footer-text"
+              href="https://github.com/zappled/search-for-quotes"
+              target="_blank"
+            >
+              View Project on Github
+            </a>{" "}
+            <a
+              className="nav-input footer-text"
+              href="https://github.com/lukePeavey/quotable"
+              target="_blank"
+            >
+              Powered by Quotable API
+            </a>
+            {/* <div className="nav-input">|</div> */}
+          </div>
+        </div>
+      </nav>
     </>
   );
 }

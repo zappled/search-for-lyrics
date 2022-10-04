@@ -1,4 +1,5 @@
 import React from "react";
+import FavouritesEntry from "../components/FavouritesEntry";
 
 const Favourites = (props) => {
   const removeFromFav = (newItem) => {
@@ -9,23 +10,15 @@ const Favourites = (props) => {
 
   return (
     <>
-      <div className="result-container">
-        <div className="quote-author">{props.author}</div>
-        <div className="quote-content">{props.content}</div>
-        <div className="quote-extra">
-          Quote length: {props.content.split(" ").length} words, tags:{" "}
-          <u>{props.tags?.toString().replace(",", ", ")}</u>
-        </div>
-        <button
-          className="quote-extra remove-fav"
-          onClick={() => removeFromFav(props.fav)}
-        >
-          <i className="material-icons" style={{ margin: "0 auto" }}>
-            close
-          </i>
-          Remove from Favourites
-        </button>
-      </div>
+      <FavouritesEntry
+        favList={props.favList}
+        setFavList={props.setFavList}
+        removeFromFav={removeFromFav}
+        fav={props.fav}
+        author={props.author}
+        content={props.content}
+        tags={props.tags}
+      />
     </>
   );
 };
