@@ -9,19 +9,25 @@ import CreateQuote from "./pages/CreateQuote";
 
 function App() {
   const [favList, setFavList] = useState([]);
-  const [sortType, setSortType] = useState("");
+  const [sortType, setSortType] = useState("author");
 
   useEffect(() => {
     const sortArray = (type) => {
-      const types = {
-        author: "author",
-        tags: "tags",
-      };
-      const sortProperty = types[type];
+      const property = type;
       const sortList = [...favList];
-      console.log(sortList);
-      sortList.sort((a, b) => b[sortProperty] - a[sortProperty]);
-      console.log(sortList);
+      if (property === "author" || property === "tags") {
+        sortList.sort((a, b) =>
+          a[property] > b[property] ? 1 : b[property] > a[property] ? -1 : 0
+        );
+      } else if (property === "length") {
+        sortList.sort((a, b) =>
+          b.content.split(" ").length > a.content.split(" ").length
+            ? 1
+            : a.content.split(" ").length > b.content.split(" ").length
+            ? -1
+            : 0
+        );
+      }
       setFavList(sortList);
     };
 
@@ -102,10 +108,18 @@ function App() {
 
                 {favList.length !== 0 ? (
                   <>
-                    <select onChange={(e) => setSortType(e.target.value)}>
-                      <option value="author">Author</option>
-                      <option value="tags">Tags</option>
-                    </select>
+                    <div className="quote-extra">
+                      Sort by:
+                      <select
+                        style={{ marginLeft: "5px" }}
+                        onChange={(e) => setSortType(e.target.value)}
+                      >
+                        <option>Default</option>
+                        <option value="author">Author</option>
+                        <option value="length">Length</option>
+                        <option value="tags">Tags</option>
+                      </select>
+                    </div>
                     {favList.map((fav) => {
                       return (
                         <Favourites
