@@ -71,10 +71,7 @@ const RandomQuote = (props) => {
   }
 
   const addToFav = (newItem) => {
-    console.log(newItem);
-    {
-      props.setFavList((prevState) => [...prevState, newItem]);
-    }
+    props.setFavList((prevState) => [...prevState, newItem]);
   };
 
   return (
@@ -91,7 +88,7 @@ const RandomQuote = (props) => {
               width: "150px",
               display: "block",
               margin: "0 auto",
-              marginBottom: "10px",
+              marginBottom: "6px",
             }}
             onClick={randomQuote}
           >

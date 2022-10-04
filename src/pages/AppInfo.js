@@ -8,7 +8,11 @@ const AppInfo = () => {
           <div className="col"></div>
           <div className="col-5">
             <br />
-            <a href="">View on Github</a>
+            Search for quotes, or create your own!
+            <br />
+            <a href="https://github.com/zappled/search-for-quotes">
+              View on Github
+            </a>
             <br />
             <a href="https://github.com/lukePeavey/quotable">
               Powered by Quotable API

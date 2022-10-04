@@ -1,5 +1,5 @@
 import React from "react";
-import SearchQuotesContent from "../pages/SearchQuotesContent";
+import SearchQuotesContent from "../components/SearchQuotesContent";
 
 const SearchByContent = (props) => {
   return (

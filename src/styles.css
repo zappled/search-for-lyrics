@@ -77,6 +77,19 @@ form {
   font-size: 80%;
 }
 
+.submit {
+  background-color: #dbdbdb;
+  font-size: 80%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.submit:hover {
+  background-color: #383636;
+  color: #ffffff8c;
+}
+
 .search-again {
   margin-bottom: 10px;
   background-color: #dbdbdb;
@@ -138,7 +151,23 @@ form {
   border-radius: 5px;
 }
 
+.remove-fav {
+  display: block;
+  margin: 0 auto;
+  background-color: #dbdbdb;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  width: 50%;
+}
+
 .add-fav:hover {
+  background-color: #383636;
+  color: #ffffff8c;
+}
+
+.remove-fav:hover {
   background-color: #383636;
   color: #ffffff8c;
 }

@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import SearchResults from "../components/SearchResults";
-import LoadingSpinner from "../components/LoadingSpinner";
+import SearchResults from "./SearchResults";
+import LoadingSpinner from "./LoadingSpinner";
 
-const SearchQuotesAuthor = (props) => {
-  const authorInputRef = useRef();
+const SearchQuotesContent = (props) => {
+  const contentInputRef = useRef();
   const [quotes, setQuotes] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
@@ -12,7 +12,7 @@ const SearchQuotesAuthor = (props) => {
 
   const addInput = (e) => {
     e.preventDefault();
-    const input = authorInputRef.current.value;
+    const input = contentInputRef.current.value;
     findQuotes(input);
   };
 
@@ -21,7 +21,7 @@ const SearchQuotesAuthor = (props) => {
       setIsLoading(true);
       setHasSearched(true);
       setCurrentInput(input);
-      const url = `https://api.quotable.io/search/quotes?query=${input}&fields=author`;
+      const url = `https://api.quotable.io/search/quotes?query=${input}&fields=content`;
       const res = await fetch(url);
       const data = await res.json();
       console.log(data.results);
@@ -72,16 +72,16 @@ const SearchQuotesAuthor = (props) => {
         </>
       ) : (
         <>
-          <div>Search quotes by person name:</div>
+          <div>Search quote contents using specific keywords:</div>
           <form onSubmit={addInput}>
             <input
               type="text"
-              placeholder="Enter name"
+              placeholder="Enter keyword"
               className="input"
-              ref={authorInputRef}
+              ref={contentInputRef}
               required
             />
-            <button>Submit</button>
+            <button className="submit">Submit</button>
           </form>
         </>
       )}
@@ -89,4 +89,4 @@ const SearchQuotesAuthor = (props) => {
   );
 };
 
-export default SearchQuotesAuthor;
+export default SearchQuotesContent;

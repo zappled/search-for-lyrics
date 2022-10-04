@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import MainMenu from "./pages/MainMenu";
 import styles from "./styles.css";
 import { Route, Switch, Link } from "react-router-dom";
-import SearchByContent from "./components/SearchByContent";
+import SearchByContent from "./pages/SearchByContent";
 import Favourites from "./pages/Favourites";
 import RandomQuote from "./pages/RandomQuote";
 import AppInfo from "./pages/AppInfo";
+import SearchByAuthor from "./pages/SearchByAuthor";
 
 function App() {
   const [favList, setFavList] = useState([]);
@@ -53,7 +53,7 @@ function App() {
       </nav>
       <Switch>
         <Route exact path="/">
-          <MainMenu setFavList={setFavList} favList={favList} />
+          <SearchByAuthor setFavList={setFavList} favList={favList} />
         </Route>
         <Route exact path="/search-content">
           <SearchByContent setFavList={setFavList} favList={favList} />
@@ -75,6 +75,9 @@ function App() {
                         length={fav.length}
                         tags={fav.tags}
                         key={Math.random()}
+                        favList={favList}
+                        setFavList={setFavList}
+                        fav={fav}
                       />
                     );
                   })

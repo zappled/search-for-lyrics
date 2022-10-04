@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import SearchResults from "../components/SearchResults";
-import LoadingSpinner from "../components/LoadingSpinner";
+import SearchResults from "./SearchResults";
+import LoadingSpinner from "./LoadingSpinner";
 
-const SearchQuotesContent = (props) => {
-  const contentInputRef = useRef();
+const SearchQuotesAuthor = (props) => {
+  const authorInputRef = useRef();
   const [quotes, setQuotes] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
@@ -12,7 +12,7 @@ const SearchQuotesContent = (props) => {
 
   const addInput = (e) => {
     e.preventDefault();
-    const input = contentInputRef.current.value;
+    const input = authorInputRef.current.value;
     findQuotes(input);
   };
 
@@ -21,7 +21,7 @@ const SearchQuotesContent = (props) => {
       setIsLoading(true);
       setHasSearched(true);
       setCurrentInput(input);
-      const url = `https://api.quotable.io/search/quotes?query=${input}&fields=content`;
+      const url = `https://api.quotable.io/search/quotes?query=${input}&fields=author`;
       const res = await fetch(url);
       const data = await res.json();
       console.log(data.results);
@@ -72,16 +72,16 @@ const SearchQuotesContent = (props) => {
         </>
       ) : (
         <>
-          <div>Search quote contents using specific keywords:</div>
+          <div>Search quotes by person name:</div>
           <form onSubmit={addInput}>
             <input
               type="text"
-              placeholder="Enter keyword"
+              placeholder="Enter name"
               className="input"
-              ref={contentInputRef}
+              ref={authorInputRef}
               required
             />
-            <button>Submit</button>
+            <button className="submit">Submit</button>
           </form>
         </>
       )}
@@ -89,4 +89,4 @@ const SearchQuotesContent = (props) => {
   );
 };
 
-export default SearchQuotesContent;
+export default SearchQuotesAuthor;

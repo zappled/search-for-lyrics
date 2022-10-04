@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import SearchQuotesAuthor from "./SearchQuotesAuthor";
+import React from "react";
+import SearchQuotesAuthor from "../components/SearchQuotesAuthor";
 
-const MainMenu = (props) => {
+const SearchByAuthor = (props) => {
   return (
     <>
       <div className="container text-center">
@@ -21,4 +21,4 @@ const MainMenu = (props) => {
   );
 };
 
-export default MainMenu;
+export default SearchByAuthor;

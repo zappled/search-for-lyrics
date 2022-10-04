@@ -6,10 +6,7 @@ const SearchResults = (props) => {
   const [details, setDetails] = useState(false);
 
   const addToFav = (newItem) => {
-    console.log(newItem);
-    {
-      props.setFavList((prevState) => [...prevState, newItem]);
-    }
+    props.setFavList((prevState) => [...prevState, newItem]);
   };
 
   return (
