@@ -175,7 +175,6 @@ form {
   border-radius: 5px;
   padding: 5px;
   margin-top: 5px;
-  width: 60%;
 }
 
 .add-fav:hover {
@@ -199,15 +198,17 @@ form {
 
 .footer-text {
   display: inline-flex;
-  width: 50%;
+  width: 35%;
   color: #ffffff8c;
   text-decoration: none;
-  margin-left: auto;
-  font-size: 90%;
+  font-size: 75%;
+  margin-left: 17px;
 }
 
 .footer-to-center {
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-left: -25px;
+  width: 50%;
 }
 
 .footer-text:hover {

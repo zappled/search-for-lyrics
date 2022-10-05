@@ -185,14 +185,23 @@ function App() {
               rel="noreferrer"
             >
               View Project on Github
-            </a>{" "}
+            </a>
             <a
               className="nav-input footer-text"
               href="https://github.com/lukePeavey/quotable"
               target="_blank"
               rel="noreferrer"
+              style={{ marginLeft: "8px" }}
             >
               Powered by Quotable API
+            </a>
+            <a
+              className="nav-input footer-text"
+              href="https://icons8.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Favicon: icons8.com
             </a>
           </div>
         </div>

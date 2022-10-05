@@ -14,6 +14,8 @@ const SearchQuotesContent = (props) => {
 
   // toggles between input form & search results
   const [hasSearched, setHasSearched] = useState(false);
+  const [hasData, setHasData] = useState(false);
+  const [noData, setNoData] = useState(false);
 
   // function to fetch API data based on submitted input
   const findQuotes = async (input) => {
@@ -24,7 +26,12 @@ const SearchQuotesContent = (props) => {
       const url = `https://api.quotable.io/search/quotes?query=${input}&fields=content`;
       const res = await fetch(url);
       const data = await res.json();
-      setQuotes(data.results);
+      if (data.totalCount !== 0) {
+        setQuotes(data.results);
+        setHasData(true);
+      } else if (data.totalCount == 0) {
+        setNoData(true);
+      }
       props.setIsLoading(false);
     }
   };
@@ -41,6 +48,8 @@ const SearchQuotesContent = (props) => {
   const searchAgain = () => {
     setHasSearched(false);
     setQuotes([]);
+    setHasData(false);
+    setNoData(false);
   };
 
   let content = "";
@@ -52,37 +61,44 @@ const SearchQuotesContent = (props) => {
 
   return (
     <>
+      {content}
       {/* display toggles depending on whether a search input has been submitted */}
       {hasSearched ? (
-        <>
-          <button className="search-again" onClick={searchAgain}>
-            Search Again
-          </button>
-          <br />
-          You searched for "{currentInput}"
-          <br />
-          {content}
-          {quotes.map((quote) => {
-            return (
-              <SearchResults
-                content={quote.content}
-                author={quote.author}
-                length={quote.length}
-                tags={quote.tags}
-                key={Math.random()}
-                setHasSearched={setHasSearched}
-                setShowDetails={setShowDetails}
-                showDetails={showDetails}
-                setFavList={props.setFavList}
-                favList={props.favList}
-                quote={quote}
-              />
-            );
-          })}
-        </>
+        hasData ? (
+          <>
+            <button className="search-again" onClick={searchAgain}>
+              Search Again
+            </button>
+            <br />
+            You searched for "{currentInput.replaceAll(`"`, ``)}"
+            <br />
+            {quotes.map((quote) => {
+              return (
+                <SearchResults
+                  content={quote.content}
+                  author={quote.author}
+                  length={quote.length}
+                  tags={quote.tags}
+                  key={Math.random()}
+                  setHasSearched={setHasSearched}
+                  setShowDetails={setShowDetails}
+                  showDetails={showDetails}
+                  setFavList={props.setFavList}
+                  favList={props.favList}
+                  quote={quote}
+                />
+              );
+            })}
+          </>
+        ) : (
+          ""
+        )
       ) : (
         <>
-          <div>Search quote contents using specific keywords:</div>
+          <div>
+            Search quote contents using specific keywords. For exact match, wrap
+            your search query in quotation marks (" "):
+          </div>
           <form onSubmit={addInput}>
             <input
               type="text"
@@ -94,6 +110,19 @@ const SearchQuotesContent = (props) => {
             <button className="submit">Submit</button>
           </form>
         </>
+      )}
+      {hasSearched && noData ? (
+        <>
+          <button className="search-again" onClick={searchAgain}>
+            Search Again
+          </button>
+          <div className="quote-extra">
+            No result returned, try another keyword. Certain common words like '
+            <u>and</u>' may not be accepted as part of the search parameters.
+          </div>
+        </>
+      ) : (
+        ""
       )}
     </>
   );
