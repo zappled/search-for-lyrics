@@ -9,7 +9,11 @@ const CreateQuoteEntry = (props) => {
           <div className="col"></div>
           <div className="col-5">
             <br />
-            <button className="add-fav" onClick={props.createAgain}>
+            <button
+              className="add-fav"
+              onClick={props.createAgain}
+              style={{ marginBottom: "10px" }}
+            >
               Create Another Quote
             </button>
             <div className="result-container">
