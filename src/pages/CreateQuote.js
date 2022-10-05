@@ -2,11 +2,10 @@ import React, { useRef, useState } from "react";
 import CreateQuoteEntry from "../components/CreateQuoteEntry";
 
 const CreateQuote = (props) => {
+  // captures user input used to generate quote
   const [nameInput, setNameInput] = useState([]);
   const [quoteInput, setQuoteInput] = useState([]);
   const [tagInput, setTagInput] = useState([]);
-
-  const [hasCreated, setHasCreated] = useState(false);
 
   const nameInputRef = useRef();
   const quoteInputRef = useRef();
@@ -23,17 +22,25 @@ const CreateQuote = (props) => {
     setTagInput(tag);
   };
 
+  // state toggles between input form & created quote
+  const [hasCreated, setHasCreated] = useState(false);
+
+  // quote is propped down following the same format as API data
+  // allows it to be added to favourites list, using the same format as other entries
   const quote = { author: nameInput, content: quoteInput, tags: tagInput };
 
+  // toggles back to input form
   const createAgain = () => {
     setHasCreated(!hasCreated);
   };
 
+  // adds entry to favourites list
   const addToFav = (newItem) => {
     props.setFavList((prevState) => [...prevState, newItem]);
   };
 
   return (
+    // display toggles depending on whether a quote has been created
     <>
       {hasCreated === false ? (
         <div className="container text-center">

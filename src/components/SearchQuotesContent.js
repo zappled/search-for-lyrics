@@ -3,32 +3,41 @@ import SearchResults from "./SearchResults";
 import LoadingSpinner from "./LoadingSpinner";
 
 const SearchQuotesContent = (props) => {
-  const contentInputRef = useRef();
+  // sets input used when fetching data from API
+  const inputRef = useRef();
   const [quotes, setQuotes] = useState([]);
-  const [hasSearched, setHasSearched] = useState(false);
+
+  // toggles collapsible box content
   const [showDetails, setShowDetails] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
   const [currentInput, setCurrentInput] = useState();
 
-  const addInput = (e) => {
-    e.preventDefault();
-    const input = contentInputRef.current.value;
-    findQuotes(input);
-  };
+  // toggles between input form & search results
+  const [hasSearched, setHasSearched] = useState(false);
 
+  // function to fetch API data based on submitted input
   const findQuotes = async (input) => {
     if (input) {
-      setIsLoading(true);
+      props.setIsLoading(true);
       setHasSearched(true);
       setCurrentInput(input);
       const url = `https://api.quotable.io/search/quotes?query=${input}&fields=content`;
       const res = await fetch(url);
       const data = await res.json();
       setQuotes(data.results);
-      setIsLoading(false);
+      props.setIsLoading(false);
     }
   };
 
+  // passes input to API fetch function
+  const addInput = (e) => {
+    e.preventDefault();
+    const input = inputRef.current.value;
+    findQuotes(input);
+  };
+
+  // toggles back to input form
+  // empties previous search results array
   const searchAgain = () => {
     setHasSearched(false);
     setQuotes([]);
@@ -36,12 +45,14 @@ const SearchQuotesContent = (props) => {
 
   let content = "";
 
-  if (isLoading) {
+  // loading spinner only appears while isLoading is true
+  if (props.isLoading) {
     content = <LoadingSpinner />;
   }
 
   return (
     <>
+      {/* display toggles depending on whether a search input has been submitted */}
       {hasSearched ? (
         <>
           <button className="search-again" onClick={searchAgain}>
@@ -77,7 +88,7 @@ const SearchQuotesContent = (props) => {
               type="text"
               placeholder="Enter keyword"
               className="input"
-              ref={contentInputRef}
+              ref={inputRef}
               required
             />
             <button className="submit">Submit</button>

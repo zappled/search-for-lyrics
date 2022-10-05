@@ -2,6 +2,7 @@ import React from "react";
 
 const CreateQuoteEntry = (props) => {
   return (
+    // displays properties propped down from CreateQuote.js
     <>
       <div className="container text-center">
         <div className="row">
@@ -23,6 +24,7 @@ const CreateQuoteEntry = (props) => {
                 </b>
               </div>
             </div>
+            {/* onClick, adds propped quote object as an entry into favourites list */}
             <button
               className="add-fav"
               onClick={() => props.addToFav(props.quote)}

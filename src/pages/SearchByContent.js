@@ -12,6 +12,10 @@ const SearchByContent = (props) => {
             <SearchQuotesContent
               setFavList={props.setFavList}
               favList={props.favList}
+              isLoading={props.isLoading}
+              setIsLoading={props.setIsLoading}
+              hasSearched={props.hasSearched}
+              setHasSearched={props.setHasSearched}
             />
           </div>
           <div className="col"></div>

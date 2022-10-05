@@ -53,7 +53,7 @@ form {
   width: 95%;
   justify-content: center;
   margin: 0 auto;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-top: 5px;
   padding: 10px;
   background: linear-gradient(45deg, #e2e2e2, #bbbbbb);
@@ -175,7 +175,7 @@ form {
   border-radius: 5px;
   padding: 5px;
   margin-top: 5px;
-  width: 50%;
+  width: 60%;
 }
 
 .add-fav:hover {

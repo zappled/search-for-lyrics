@@ -2,6 +2,7 @@ import React from "react";
 import FavouritesEntry from "../components/FavouritesEntry";
 
 const Favourites = (props) => {
+  // removes selected entry from favourites list
   const removeFromFav = (newItem) => {
     props.setFavList((prevState) =>
       prevState.filter((item) => item !== newItem)

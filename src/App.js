@@ -8,9 +8,13 @@ import SearchByAuthor from "./pages/SearchByAuthor";
 import CreateQuote from "./pages/CreateQuote";
 
 function App() {
+  // favList state is propped down to generate favourites list
   const [favList, setFavList] = useState([]);
+
+  //sortType state is used to sort entries within favourites list
   const [sortType, setSortType] = useState("");
 
+  //useEffect sorts entries within favourites list, based on selected property
   useEffect(() => {
     const sortArray = (type) => {
       const property = type;
@@ -34,7 +38,11 @@ function App() {
     sortArray(sortType);
   }, [sortType]);
 
+  // displays loading spinner when state is true
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
+    // navigation bar
     <>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="navbar-nav">
@@ -78,10 +86,20 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <SearchByAuthor setFavList={setFavList} favList={favList} />
+          <SearchByAuthor
+            setFavList={setFavList}
+            favList={favList}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+          />
         </Route>
         <Route exact path="/search-content">
-          <SearchByContent setFavList={setFavList} favList={favList} />
+          <SearchByContent
+            setFavList={setFavList}
+            favList={favList}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+          />
         </Route>
 
         <Route exact path="/random">
@@ -89,7 +107,12 @@ function App() {
             <div className="row">
               <div className="col"></div>
               <div className="col-5">
-                <RandomQuote favList={favList} setFavList={setFavList} />
+                <RandomQuote
+                  favList={favList}
+                  setFavList={setFavList}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                />
               </div>
               <div className="col"></div>
             </div>
@@ -98,6 +121,7 @@ function App() {
         <Route exact path="/create-quote">
           <CreateQuote favList={favList} setFavList={setFavList} />
         </Route>
+        {/* Favourites page toggles depending on whether there is already an entry */}
         <Route exact path="/favourites">
           <div className="container text-center">
             <div className="row">
@@ -150,6 +174,7 @@ function App() {
         </Route>
       </Switch>
 
+      {/* // footer  */}
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-bottom">
         <div className="navbar-nav footer-to-center">
           <div className="navbar-brand">
@@ -157,6 +182,7 @@ function App() {
               className="nav-input footer-text"
               href="https://github.com/zappled/search-for-quotes"
               target="_blank"
+              rel="noreferrer"
             >
               View Project on Github
             </a>{" "}
@@ -164,6 +190,7 @@ function App() {
               className="nav-input footer-text"
               href="https://github.com/lukePeavey/quotable"
               target="_blank"
+              rel="noreferrer"
             >
               Powered by Quotable API
             </a>

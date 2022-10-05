@@ -5,10 +5,10 @@ import LoadingSpinner from "../components/LoadingSpinner";
 const RandomQuote = (props) => {
   const [quote, setQuote] = useState({});
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
+  // loads a random quote on component mount
   const fetchQuote = async (url) => {
-    setIsLoading(true);
+    props.setIsLoading(true);
     try {
       const res = await fetch(url);
       if (res.status !== 200) {
@@ -25,11 +25,17 @@ const RandomQuote = (props) => {
     } catch (err) {
       setError(err.message);
     }
-    setIsLoading(false);
+    props.setIsLoading(false);
   };
 
+  useEffect(() => {
+    const url = `https://api.quotable.io/random`;
+    fetchQuote(url);
+  }, []);
+
+  // generates another random quote on button click
   const randomQuote = async () => {
-    setIsLoading(true);
+    props.setIsLoading(true);
     const url = `https://api.quotable.io/random`;
     const res = await fetch(url);
     const data = await res.json();
@@ -38,13 +44,8 @@ const RandomQuote = (props) => {
       author: data.author,
       tags: data.tags,
     });
-    setIsLoading(false);
+    props.setIsLoading(false);
   };
-
-  useEffect(() => {
-    const url = `https://api.quotable.io/random`;
-    fetchQuote(url);
-  }, []);
 
   let content = "";
 
@@ -69,7 +70,7 @@ const RandomQuote = (props) => {
     );
   }
 
-  if (isLoading) {
+  if (props.isLoading) {
     content = <LoadingSpinner />;
   }
 

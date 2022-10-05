@@ -3,15 +3,17 @@ import React, { useState } from "react";
 const SearchResults = (props) => {
   // const [extraContent, setExtraContent] = useState("");
 
+  // toggles whether expanded box appears
   const [details, setDetails] = useState(false);
 
+  // adds selected entry to favourites list
   const addToFav = (newItem) => {
     props.setFavList((prevState) => [...prevState, newItem]);
-    console.log(props.favList);
   };
 
   return (
     <>
+      {/* on click, expands box to show more details */}
       <div className="result-container" onClick={() => setDetails(!details)}>
         <div className="quote-author">{props.author}:</div>
         <div className="quote-content">"{props.content}"</div>
@@ -41,5 +43,3 @@ const SearchResults = (props) => {
 };
 
 export default SearchResults;
-
-// add 'create own quote' function as stretch goal
