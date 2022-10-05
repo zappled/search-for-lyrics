@@ -12,6 +12,7 @@ const FavouritesEntry = (props) => {
         </div>
         <button
           className="quote-extra remove-fav"
+          style={{ width: "35%" }}
           onClick={() => props.removeFromFav(props.fav)}
         >
           <i className="material-icons" style={{ margin: "0 auto" }}>

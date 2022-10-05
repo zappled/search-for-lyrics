@@ -47,6 +47,7 @@ form {
 
 .result-container {
   /* display: flex; */
+  position: relative;
   border: 3px solid black;
   border-style: double;
   width: 95%;
@@ -55,11 +56,25 @@ form {
   margin-bottom: 5px;
   margin-top: 5px;
   padding: 10px;
+  background: linear-gradient(45deg, #e2e2e2, #bbbbbb);
+  z-index: 1;
 }
 
-.result-container:hover {
-  /* background-color: #dbdbdb; */
-  background: linear-gradient(30deg, white, #7978788c);
+.result-container::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(45deg, #bbbbbb, #e2e2e2);
+  z-index: -1;
+  transition: opacity 0.5s linear;
+  opacity: 0;
+}
+
+.result-container:hover::before {
+  opacity: 1;
 }
 
 .quote-author {

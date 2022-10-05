@@ -9,7 +9,7 @@ import CreateQuote from "./pages/CreateQuote";
 
 function App() {
   const [favList, setFavList] = useState([]);
-  const [sortType, setSortType] = useState("author");
+  const [sortType, setSortType] = useState("");
 
   useEffect(() => {
     const sortArray = (type) => {
@@ -109,12 +109,12 @@ function App() {
                 {favList.length !== 0 ? (
                   <>
                     <div className="quote-extra">
-                      Sort by:
+                      <br />
                       <select
-                        style={{ marginLeft: "5px" }}
+                        style={{ marginLeft: "5px", marginBottom: "7px" }}
                         onChange={(e) => setSortType(e.target.value)}
                       >
-                        <option>Default</option>
+                        <option>Sort favourites by...</option>
                         <option value="author">Author</option>
                         <option value="length">Length</option>
                         <option value="tags">Tags</option>
