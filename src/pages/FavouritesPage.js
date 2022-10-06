@@ -72,7 +72,7 @@ const FavouritesPage = (props) => {
                   </select>
                   <br />
                   <button
-                    className="remove-fav"
+                    className="clear-fav"
                     onClick={confirmEmpty}
                     style={{ marginBottom: "12.5px" }}
                   >

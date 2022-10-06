@@ -116,6 +116,7 @@ const SearchQuotesAuthor = (props) => {
         </>
       )}
       {hasSearched && noData ? (
+        // returns error page if hasSearched has triggered but no result is returned from API
         <>
           <button className="search-again" onClick={searchAgain}>
             Search Again

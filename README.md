@@ -46,7 +46,7 @@ I used a map function to iterate through the returned arrays from the API databa
 ////////////////////////////
 Unsolved Problems
 
-There is no alert to indicate that an entry has been added to the favourites list.
+On the search results, pressing the 'add to favourites' button would close the collapsible boxes of all entries that are currently expanded, not just the clicked entry itself.
 
 There is currently no database for 'create a quote', the created quote is lost whenever you navigate to another page.
 

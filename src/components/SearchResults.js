@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 const SearchResults = (props) => {
-  // const [extraContent, setExtraContent] = useState("");
-
   // toggles whether expanded box appears
   const [details, setDetails] = useState(false);
 
