@@ -32,9 +32,11 @@ const SearchResults = (props) => {
         )}
       </div>
       {details ? (
-        <button className="add-fav" onClick={() => addToFav(props.quote)}>
-          <i className="material-icons">favorite</i>Add to Favourites
-        </button>
+        <>
+          <button className="add-fav" onClick={() => addToFav(props.quote)}>
+            <i className="material-icons">favorite</i>Add to Favourites
+          </button>
+        </>
       ) : (
         ""
       )}

@@ -11,6 +11,20 @@ import useLocalStorage from "./useLocalStorage";
 function App() {
   // favList state is propped down to generate favourites list
   const [favList, setFavList] = useLocalStorage("favList", "");
+  const [showConfirmBox, setShowConfirmBox] = useState("none");
+
+  const confirmEmpty = () => {
+    setShowConfirmBox("block");
+  };
+
+  const clickYes = () => {
+    setFavList([]);
+    setShowConfirmBox("none");
+  };
+
+  const clickNo = () => {
+    setShowConfirmBox("none");
+  };
 
   //sortType state is used to sort entries within favourites list
   const [sortType, setSortType] = useState("");
@@ -42,6 +56,7 @@ function App() {
   // displays loading spinner when state is true
   const [isLoading, setIsLoading] = useState(false);
 
+  // adds fav list entries to localStorage
   useEffect(() => {
     localStorage.setItem("favList", JSON.stringify(favList));
   }, [favList]);
@@ -148,6 +163,14 @@ function App() {
                         <option value="length">Length</option>
                         <option value="tags">Tags</option>
                       </select>
+                      <br />
+                      <button
+                        className="remove-fav"
+                        onClick={confirmEmpty}
+                        style={{ marginBottom: "10px" }}
+                      >
+                        Clear Favourites List
+                      </button>
                     </div>
                     {favList.map((fav) => {
                       return (
@@ -174,6 +197,19 @@ function App() {
                 )}
               </div>
               <div className="col"></div>
+            </div>
+          </div>
+          <div className="confirm-box" style={{ display: showConfirmBox }}>
+            <div className="confirm-text">
+              Are you sure you want to empty your favourites list?
+            </div>
+            <div className="confirm-text">
+              <button className="confirm-button" onClick={clickYes}>
+                Yes
+              </button>
+              <button className="confirm-button" onClick={clickNo}>
+                No
+              </button>
             </div>
           </div>
         </Route>

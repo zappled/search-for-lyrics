@@ -29,7 +29,7 @@ const SearchQuotesContent = (props) => {
       if (data.totalCount !== 0) {
         setQuotes(data.results);
         setHasData(true);
-      } else if (data.totalCount == 0) {
+      } else if (data.totalCount === 0) {
         setNoData(true);
       }
       props.setIsLoading(false);
@@ -94,6 +94,7 @@ const SearchQuotesContent = (props) => {
           ""
         )
       ) : (
+        // input form appears by default (hasSearched state is false)
         <>
           <div>
             Search quote contents using specific keywords. For exact match, wrap
@@ -112,6 +113,7 @@ const SearchQuotesContent = (props) => {
         </>
       )}
       {hasSearched && noData ? (
+        // returns error page if hasSearched has triggered but no result is returned from API
         <>
           <button className="search-again" onClick={searchAgain}>
             Search Again
