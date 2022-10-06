@@ -14,6 +14,25 @@
   padding-left: 15px;
 }
 
+.material-icons {
+  font-size: 90%;
+  padding-right: 3px;
+  margin-top: -2.5px;
+  vertical-align: middle;
+}
+
+.nav-input .material-icons {
+  margin-top: -1px;
+}
+
+.header-icon {
+  font-size: 100%;
+  padding-right: 3px;
+  padding-left: 3px;
+  align-items: center;
+  margin-top: -10px;
+}
+
 .nav-link {
   font-size: 90%;
 }
@@ -41,20 +60,6 @@ form {
   border-bottom: 1px solid black;
   margin-right: 5px;
   margin-bottom: 10px;
-}
-
-.material-icons {
-  font-size: 90%;
-  padding-right: 3px;
-  margin-top: -2.5px;
-  vertical-align: middle;
-}
-
-.header-icon {
-  font-size: 100%;
-  padding-right: 3px;
-  padding-left: 3px;
-  align-items: center;
 }
 
 .result-container {
@@ -189,6 +194,10 @@ form {
   margin-top: 5px;
 }
 
+.remove-fav .material-icons {
+  padding-bottom: 1px;
+}
+
 .add-fav:hover {
   background-color: #383636;
   color: #ffffff8c;
@@ -217,7 +226,7 @@ form {
   border: 3px double black;
   align-items: center;
   position: absolute;
-  top: 14.8%;
+  top: 15%;
   right: 37.5%;
   margin: 0 auto;
   z-index: 1;

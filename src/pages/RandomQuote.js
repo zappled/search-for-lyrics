@@ -89,14 +89,15 @@ const RandomQuote = (props) => {
           <div className="col"></div>
           <div className="col-5"></div>
           <br />
-          <p>Be inspired by our selection of random quotes!</p>
+          <div>Be inspired by our selection of random quotes!</div>
           <button
             className="search-again"
             style={{
               width: "150px",
               display: "block",
               margin: "0 auto",
-              marginBottom: "6px",
+              marginBottom: "8px",
+              marginTop: "8px",
             }}
             onClick={randomQuote}
           >

@@ -120,7 +120,7 @@ const SearchQuotesContent = (props) => {
           <button className="search-again" onClick={searchAgain}>
             Search Again
           </button>
-          <div className="quote-extra">
+          <div className="quote-extra" style={{ width: "50%" }}>
             No result returned, try another keyword. Certain common words like '
             <u>and</u>' may not be accepted as part of the search parameters.
           </div>
