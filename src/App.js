@@ -6,10 +6,11 @@ import Favourites from "./pages/Favourites";
 import RandomQuote from "./pages/RandomQuote";
 import SearchByAuthor from "./pages/SearchByAuthor";
 import CreateQuote from "./pages/CreateQuote";
+import useLocalStorage from "./useLocalStorage";
 
 function App() {
   // favList state is propped down to generate favourites list
-  const [favList, setFavList] = useState([]);
+  const [favList, setFavList] = useLocalStorage("favList", "");
 
   //sortType state is used to sort entries within favourites list
   const [sortType, setSortType] = useState("");
@@ -40,6 +41,10 @@ function App() {
 
   // displays loading spinner when state is true
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("favList", JSON.stringify(favList));
+  }, [favList]);
 
   return (
     // navigation bar
