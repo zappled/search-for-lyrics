@@ -88,6 +88,8 @@ const SearchQuotesAuthor = (props) => {
                   setFavList={props.setFavList}
                   favList={props.favList}
                   quote={quote}
+                  favIndicate={props.favIndicate}
+                  setFavIndicate={props.setFavIndicate}
                 />
               );
             })}

@@ -76,6 +76,10 @@ const RandomQuote = (props) => {
 
   const addToFav = (newItem) => {
     props.setFavList((prevState) => [...prevState, newItem]);
+    props.setFavIndicate("block");
+    setTimeout(() => {
+      props.setFavIndicate("none");
+    }, 2000);
   };
 
   return (

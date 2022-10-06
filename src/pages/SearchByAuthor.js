@@ -16,6 +16,8 @@ const SearchByAuthor = (props) => {
               setIsLoading={props.setIsLoading}
               hasSearched={props.hasSearched}
               setHasSearched={props.setHasSearched}
+              favIndicate={props.favIndicate}
+              setFavIndicate={props.setFavIndicate}
             />
           </div>
           <div className="col"></div>

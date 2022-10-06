@@ -1,5 +1,5 @@
 import React from "react";
-import FavouritesEntry from "../components/FavouritesEntry";
+import FavouritesEntry from "./FavouritesEntry";
 
 const Favourites = (props) => {
   // removes selected entry from favourites list

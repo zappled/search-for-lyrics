@@ -11,7 +11,8 @@ html {
 body {
   margin: 0;
   background-color: rgb(227, 227, 227);
-  padding-bottom: 80px;
+  padding-bottom: 60px;
+  padding-top: 45px;
 }
 
 .centered {
