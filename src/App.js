@@ -20,7 +20,9 @@ function App() {
     localStorage.setItem("favList", JSON.stringify(favList));
   }, [favList]);
 
-  const [favIndicate, setFavIndicate] = useState("none");
+  const [favIndicate, setFavIndicate] = useState("block");
+
+  const [mobileMenu, setMobileMenu] = useState(true);
 
   return (
     // navigation bar
@@ -32,49 +34,81 @@ function App() {
             Search for Quotes
             <i className="material-icons header-icon">format_quote</i>
           </div>
-          <Link to="/" className="nav-link">
-            <div className="nav-input">
+
+          <Link
+            to="/"
+            className={mobileMenu ? "nav-link expanded" : "nav-link"}
+            // style={{ display: mobileMenu }}
+          >
+            <ul className="nav-input">
               <i className="material-icons">search</i>
               Search by Author
-            </div>
+            </ul>
           </Link>
-          <Link to="search-content" className="nav-link">
-            <div className="nav-input">
+          <Link
+            to="search-content"
+            className={mobileMenu ? "nav-link expanded" : "nav-link"}
+            // style={{ display: mobileMenu }}
+            // onClick={() => setMobileMenu("none")}
+          >
+            <ul className="nav-input">
               <i className="material-icons">search</i>
               Search by Content
-            </div>
+            </ul>
           </Link>
-          <Link to="random" className="nav-link">
-            <div className="nav-input">
+          <Link
+            to="random"
+            className={mobileMenu ? "nav-link expanded" : "nav-link"}
+            // style={{ display: mobileMenu }}
+            // onClick={() => setMobileMenu("none")}
+          >
+            <ul className="nav-input">
               <i className="material-icons">question_mark</i>
               Random Quote
-            </div>
+            </ul>
           </Link>
-          <Link to="create-quote" className="nav-link">
-            <div className="nav-input">
+          <Link
+            to="create-quote"
+            className={mobileMenu ? "nav-link expanded" : "nav-link"}
+            // style={{ display: mobileMenu }}
+            // onClick={() => setMobileMenu("none")}
+          >
+            <ul className="nav-input">
               <i className="material-icons">sms</i>
               Create A Quote
-            </div>
+            </ul>
           </Link>
-          <Link to="favourites" className="nav-link">
-            <div className="nav-input">
+          <Link
+            to="favourites"
+            className={mobileMenu ? "nav-link expanded" : "nav-link"}
+            // style={{ display: mobileMenu }}
+            // onClick={() => setMobileMenu("none")}
+          >
+            <ul className="nav-input">
               <i className="material-icons">favorite</i>
               Favourites
-            </div>
+            </ul>
           </Link>
+
+          <span className="icon">
+            <i
+              className="fa fa-bars"
+              onClick={() => setMobileMenu(!mobileMenu)}
+            ></i>
+          </span>
+          <span className="navbar-text" style={{ display: favIndicate }}>
+            <i
+              className="material-icons"
+              style={{
+                fontSize: "150%",
+                paddingRight: "0px",
+              }}
+            >
+              arrow_left
+            </i>
+            Added to Favourites
+          </span>
         </div>
-        <span className="navbar-text" style={{ display: favIndicate }}>
-          <i
-            className="material-icons"
-            style={{
-              fontSize: "150%",
-              paddingRight: "0px",
-            }}
-          >
-            arrow_left
-          </i>
-          Added to Favourites
-        </span>
       </nav>
 
       <Switch>

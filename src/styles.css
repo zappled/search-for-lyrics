@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   padding-left: 15px;
+  margin-bottom: 0;
 }
 
 .material-icons {
@@ -242,7 +243,7 @@ form {
   border: 3px double black;
   align-items: center;
   position: absolute;
-  top: 15%;
+  top: 14%;
   right: 37.5%;
   margin: 0 auto;
   z-index: 1;
@@ -295,4 +296,111 @@ form {
   padding: 0 20px;
   font-size: 80%;
   color: rgb(188, 188, 124);
+}
+
+.navbar .icon {
+  display: none;
+}
+
+.navbar span .mobile-menu {
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .fixed-top {
+    position: relative;
+    top: -45px;
+    left: 0;
+  }
+
+  .container {
+    margin-top: -10%;
+  }
+
+  .container .text-center {
+    margin-top: 0;
+  }
+
+  .fixed-top a.nav-link {
+    display: none;
+  }
+
+  .fixed-top a.nav-link.expanded {
+    display: block;
+    text-decoration: none;
+    color: #ffffff8c;
+    margin-bottom: 7.5px;
+    margin-left: 3px;
+  }
+
+  .navbar .icon {
+    display: block;
+    color: #dbdbdb;
+    position: fixed;
+    right: 2.5%;
+    top: 1.75%;
+  }
+
+  .col-5 {
+    width: 100%;
+  }
+
+  nav {
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-link {
+    display: inline-block;
+  }
+
+  .fixed-bottom {
+    height: 9.5%;
+  }
+
+  .fixed-bottom .nav-item {
+    /* display: flex; */
+    margin-top: -10px;
+    padding-top: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .fixed-bottom .navbar-nav {
+    display: flex;
+  }
+
+  .navbar-text {
+    position: absolute;
+    top: 7.5%;
+    left: 50%;
+  }
+  .confirm-box {
+    width: 65%;
+    left: 25%;
+    top: 25%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  /* .fixed-top {
+    height: 7.5%;
+  } */
+
+  .fixed-top .nav-input {
+    font-size: 75%;
+  }
+  .col-5 {
+    width: 75%;
+  }
+  .confirm-box {
+    width: 40%;
+    height: 8%;
+    left: 30%;
+    top: 9.25%;
+  }
+  .fixed-top .navbar-text {
+    position: absolute;
+    top: 60%;
+    right: -1%;
+    font-size: 10px;
+  }
 }
