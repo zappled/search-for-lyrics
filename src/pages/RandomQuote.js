@@ -84,10 +84,8 @@ const RandomQuote = (props) => {
 
   return (
     <>
-      <div className="container text-center">
+      <div className="container text-center" style={{ paddingTop: "25px" }}>
         <div className="row">
-          <div className="col"></div>
-          <div className="col-5"></div>
           <br />
           <div>Be inspired by our selection of random quotes!</div>
           <button
