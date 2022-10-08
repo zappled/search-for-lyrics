@@ -404,6 +404,9 @@ form {
 }
 
 @media only screen and (min-width: 992px) {
+  .fixed-top .nav-input {
+    font-size: 100%;
+  }
   .confirm-box {
     width: 25%;
     height: 12%;
@@ -415,7 +418,7 @@ form {
   }
   .navbar .navbar-text {
     position: absolute;
-    top: 12.5%;
-    right: 40%;
+    top: 6.5px;
+    right: 550px;
   }
 }

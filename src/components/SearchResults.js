@@ -7,7 +7,7 @@ const SearchResults = (props) => {
   // adds selected entry to favourites list
   const addToFav = (newItem) => {
     props.setFavList((prevState) => [...prevState, newItem]);
-    props.setFavIndicate("block");
+    props.setFavIndicate("none");
     setTimeout(() => {
       props.setFavIndicate("none");
     }, 2000);
@@ -16,7 +16,7 @@ const SearchResults = (props) => {
   return (
     <>
       {/* on click, expands box to show more details */}
-      <div className="result-container" onClick={() => setDetails(!details)}>
+      <div className="result-container" onClick={() => setDetails(true)}>
         <div className="quote-author">{props.author}:</div>
         <div className="quote-content">"{props.content}"</div>
         {details ? (
