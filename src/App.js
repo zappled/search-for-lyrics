@@ -20,7 +20,7 @@ function App() {
     localStorage.setItem("favList", JSON.stringify(favList));
   }, [favList]);
 
-  const [favIndicate, setFavIndicate] = useState("block");
+  const [favIndicate, setFavIndicate] = useState("none");
 
   const [mobileMenu, setMobileMenu] = useState(true);
 
@@ -38,7 +38,7 @@ function App() {
           <Link
             to="/"
             className={mobileMenu ? "nav-link expanded" : "nav-link"}
-            // style={{ display: mobileMenu }}
+            onClick={() => setMobileMenu(!mobileMenu)}
           >
             <ul className="nav-input">
               <i className="material-icons">search</i>
@@ -48,8 +48,7 @@ function App() {
           <Link
             to="search-content"
             className={mobileMenu ? "nav-link expanded" : "nav-link"}
-            // style={{ display: mobileMenu }}
-            // onClick={() => setMobileMenu("none")}
+            onClick={() => setMobileMenu(!mobileMenu)}
           >
             <ul className="nav-input">
               <i className="material-icons">search</i>
@@ -59,8 +58,7 @@ function App() {
           <Link
             to="random"
             className={mobileMenu ? "nav-link expanded" : "nav-link"}
-            // style={{ display: mobileMenu }}
-            // onClick={() => setMobileMenu("none")}
+            onClick={() => setMobileMenu(!mobileMenu)}
           >
             <ul className="nav-input">
               <i className="material-icons">question_mark</i>
@@ -70,8 +68,7 @@ function App() {
           <Link
             to="create-quote"
             className={mobileMenu ? "nav-link expanded" : "nav-link"}
-            // style={{ display: mobileMenu }}
-            // onClick={() => setMobileMenu("none")}
+            onClick={() => setMobileMenu(!mobileMenu)}
           >
             <ul className="nav-input">
               <i className="material-icons">sms</i>
@@ -81,8 +78,7 @@ function App() {
           <Link
             to="favourites"
             className={mobileMenu ? "nav-link expanded" : "nav-link"}
-            // style={{ display: mobileMenu }}
-            // onClick={() => setMobileMenu("none")}
+            onClick={() => setMobileMenu(!mobileMenu)}
           >
             <ul className="nav-input">
               <i className="material-icons">favorite</i>

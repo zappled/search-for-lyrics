@@ -291,8 +291,9 @@ form {
   color: #ffffff8c;
 }
 
-.navbar span {
+.navbar .navbar-text {
   margin-left: -15px;
+  margin-top: 10px;
   padding: 0 20px;
   font-size: 80%;
   color: rgb(188, 188, 124);
@@ -358,7 +359,6 @@ form {
   }
 
   .fixed-bottom .nav-item {
-    /* display: flex; */
     margin-top: -10px;
     padding-top: 0;
     justify-content: center;
@@ -370,21 +370,19 @@ form {
 
   .navbar-text {
     position: absolute;
-    top: 7.5%;
+    top: -10%;
     left: 50%;
+    margin-top: 0;
   }
   .confirm-box {
-    width: 65%;
-    left: 25%;
-    top: 25%;
+    width: 80%;
+    height: 12.5%;
+    left: 10%;
+    top: 16.25%;
   }
 }
 
-@media only screen and (max-width: 800px) {
-  /* .fixed-top {
-    height: 7.5%;
-  } */
-
+@media only screen and (min-width: 768px) {
   .fixed-top .nav-input {
     font-size: 75%;
   }
@@ -392,15 +390,32 @@ form {
     width: 75%;
   }
   .confirm-box {
-    width: 40%;
-    height: 8%;
-    left: 30%;
-    top: 9.25%;
+    width: 36%;
+    height: 12.5%;
+    left: 32%;
+    top: 14%;
   }
   .fixed-top .navbar-text {
     position: absolute;
-    top: 60%;
+    top: 45%;
     right: -1%;
     font-size: 10px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .confirm-box {
+    width: 25%;
+    height: 12%;
+    left: 37.5%;
+    top: 14%;
+  }
+  .col-5 {
+    width: 50%;
+  }
+  .navbar .navbar-text {
+    position: absolute;
+    top: 12.5%;
+    right: 40%;
   }
 }
